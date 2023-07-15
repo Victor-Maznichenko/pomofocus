@@ -198,7 +198,7 @@ function showTodo(text) {
         todoBtn = document.createElement('button');
     todoSettingsBtn = document.createElement('button');
     todoBtn.classList.add('todo__btn');
-    todoBtn.innerHTML = '<img src="../images/menu.png" alt="">';
+    todoBtn.innerHTML = '<img src="images/menu.png" alt="">';
     todoSettingsBtn.classList.add('todo__settings-save');
     todoSettingsBtn.innerText = 'Сохранить';
     todoHTML = `
@@ -224,9 +224,7 @@ function showTodo(text) {
             <div class="todo__checkbox checkbox">
                 <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
                     <circle cx="25" cy="25" r="25" />
-                    <path
-                        d="M34.8732 11.1239L25.7798 36.2608C25.5067 37.0157 24.5003 37.1573 24.0295 36.5071L16.8731 26.6239"
-                        stroke="white" stroke-width="3" />
+                    <path d="M34.8732 11.1239L25.7798 36.2608C25.5067 37.0157 24.5003 37.1573 24.0295 36.5071L16.8731 26.6239" stroke="white" stroke-width="3" />
                 </svg>
             </div>
             <div class="todo__text">${text}</div>
