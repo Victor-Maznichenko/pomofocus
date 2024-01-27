@@ -1,18 +1,19 @@
+"use strict";
+
+// Initialize tabs
 class Tab {
-	constructor(id, defaultTime) {
+	constructor(id, time) {
 		this.id = id;
-		this.data = document.getElementById(this.id);
+		this.HTMLElement = document.getElementById("tab1");
 		this.counterEl = document.querySelector(`#${this.id} .timer__count`);
-		this.defaultTime = defaultTime;
-		this.time = defaultTime;
+		this.time = time;
+		this.defaultTime = time;
 		this.count = 1;
 	}
 	updateCounter() {
-		this.data.querySelector(".timer__count").innerHTML = "#" + this.count;
+		this.HTMLElement.querySelector(".timer__count").innerHTML = "#" + this.count;
 	}
 }
-
-// TABS
 const tab1 = new Tab("tab1", 1500);
 const tab2 = new Tab("tab2", 300);
 const tab3 = new Tab("tab3", 900);
@@ -22,7 +23,7 @@ let activeTab = tab1;
 const buttonStartTimer = document.getElementById("startBtn");
 const buttonSkipTimer = document.getElementById("skipBtn");
 const buttonsTabs = document.querySelectorAll(".timer__option");
-let timeDisplay = activeTab.data.querySelector(".timer__string");
+let timeDisplay = activeTab.HTMLElement.querySelector(".timer__string");
 
 buttonsTabs.forEach(buttonsTab => {
 	buttonsTab.addEventListener("click", event => {
@@ -44,7 +45,7 @@ function setTabActive(id) {
 	if (isTimerActive) {
 		resetTimer();
 	}
-	activeTab.data.classList.remove("active");
+	activeTab.HTMLElement.classList.remove("active");
 	switch (id) {
 		case tab1.id:
 			activeTab = tab1;
@@ -56,11 +57,11 @@ function setTabActive(id) {
 			activeTab = tab3;
 			break;
 	}
-	activeTab.data.classList.add("active");
-	timeDisplay = activeTab.data.querySelector(".timer__string");
+	activeTab.HTMLElement.classList.add("active");
+	timeDisplay = activeTab.HTMLElement.querySelector(".timer__string");
 }
 
-// TIMER
+// Timer
 buttonStartTimer.addEventListener("click", () => {
 	buttonStartTimer.classList.add("disable");
 	buttonSkipTimer.classList.add("active");
@@ -71,7 +72,7 @@ buttonStartTimer.addEventListener("click", () => {
 let timerInterval;
 
 function timeExpired() {
-	activeTab.count++;
+	++activeTab.count;
 	activeTab.updateCounter();
 	resetTimer();
 	if (activeTab == tab1) {
@@ -99,7 +100,6 @@ function startTimer(time) {
 		if (time <= 0) {
 			timeExpired();
 		}
-
 		time--;
 	}
 }
@@ -170,24 +170,25 @@ function clearTodo() {
 function showTodo(text) {
 	const newId = tasks.length + 1,
 		todoBtn = document.createElement("button");
-	todoSettingsBtn = document.createElement("button");
+	let todoSettingsBtn = document.createElement("button");
 	todoBtn.classList.add("todo__btn");
 	todoBtn.innerHTML = '<img src="../images/menu.png" alt="">';
 	todoSettingsBtn.classList.add("todo__settings-save");
 	todoSettingsBtn.innerText = "Сохранить";
-	todoHTML = `
+	let todoHTML = `
     <li class="todos__item todo" id=${"todo-" + newId}>
         <div class="todo__settings hide">
             <div class="todo__settings-inner">
                 <div class="todo__settings-item">
                     <p>Изменить текст:</p>
                     <label class="todo__input input">
-                    <input class="input-inner" type="text" name="changeTodo" value="${text}" placeholder="Введите текст"></label>
+                    <input class="input-inner" type="text" name="changeInput"
+                    value="${text}" placeholder="Введите текст"></label>
                 </div>
                 <div class="todo__settings-item">
                     <p>Введите количество помодоро:</p>
                     <label class="todo__input-nubmer input-nubmer">
-                        <input class="todo__pomo-time input-nubmer__inner" name="time" value="1" type="number">
+                        <input class="todo__pomo-time input-nubmer__inner" name="countPomo" value="1" type="number">
                         <button class="input-nubmer__plus" type="button">+</button>
                         <button class="input-nubmer__minus" type="button">-</button>
                     </label>
@@ -234,19 +235,19 @@ function submitHangler(e) {
 }
 
 function toggleSettings(e) {
-	btn = e.target;
-	todoSettings = btn.parentNode.children[0];
-	todoMain = btn.parentNode.children[1];
+	const btn = e.target;
+	const todoSettings = btn.parentNode.children[0];
+	const todoMain = btn.parentNode.children[1];
 	btn.classList.toggle("hide");
 	todoMain.classList.toggle("hide");
 	todoSettings.classList.toggle("hide");
 }
 
 function saveSettings(e) {
-	saveBtn = e.target;
-	todoSettings = saveBtn.parentNode;
-	todoMain = saveBtn.parentNode.parentNode.children[1];
-	todoBtn = saveBtn.parentNode.parentNode.children[2];
+	const saveBtn = e.target;
+	const todoSettings = saveBtn.parentNode;
+	const todoMain = saveBtn.parentNode.parentNode.children[1];
+	const todoBtn = saveBtn.parentNode.parentNode.children[2];
 	todoMain.classList.toggle("hide");
 	todoBtn.classList.toggle("hide");
 	todoSettings.classList.toggle("hide");
@@ -255,7 +256,6 @@ function saveSettings(e) {
 function init() {
 	loadTasks();
 	todoForm.addEventListener("submit", submitHangler);
-	todoSettingsBtn = document.querySelectorAll(".todo__btn");
 }
 init();
 
@@ -267,13 +267,11 @@ function inputNum() {
 			minus = el.querySelector(".input-nubmer__minus"),
 			input = el.querySelector(".input-nubmer__inner");
 		let count = input.value;
-
 		plus.addEventListener("click", () => {
 			++count;
 			input.value = input.value < 0 ? 0 : count;
 			updatePomodos(count);
 		});
-
 		minus.addEventListener("click", () => {
 			count > 1 ? --count : count;
 			input.value = input.value < 0 ? 0 : count;
