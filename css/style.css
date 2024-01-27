@@ -317,10 +317,9 @@ li {
 }
 
 .timer__start {
-  font-size: 1.25rem;
   cursor: pointer;
+  font-size: 1.25rem;
   text-decoration: underline;
-  margin-right: 1.87rem;
 }
 
 .timer__start.disable {
@@ -329,20 +328,19 @@ li {
 }
 
 .timer__skip {
+  position: absolute;
+  top: 0;
+  right: 30%;
+  -webkit-transform: translateX(50%);
+  -ms-transform: translateX(50%);
+  transform: translateX(50%);
   cursor: pointer;
-  width: 40px;
-  margin-right: -4.37remg;
   pointer-events: none;
+  font-size: 1.4rem;
   opacity: 0;
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   transition: all 0.4s;
-}
-
-.timer__skip img {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 .timer__skip.active {
@@ -352,6 +350,7 @@ li {
 
 .timer__bottom {
   text-align: center;
+  position: relative;
 }
 
 .footer__description {
