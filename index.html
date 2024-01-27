@@ -1,95 +1,109 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomofocus</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/libs/normalize.min.css">
-    <link rel="stylesheet" href="./css/style.min.css">
+	<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Pomofocus</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,700;1,400&display=swap"
+		rel="stylesheet"
+	/>
+	<link rel="shortcut icon" type="image/png" href="./images/favicon-32x32.png" sizes="32x32" />
+	<link rel="shortcut icon" type="image/png" href="./images/favicon-16x16.png" sizes="16x16" />
+	<link rel="stylesheet" href="./css/libs/normalize.min.css" />
+	<link rel="stylesheet" href="./css/style.min.css" />
 </head>
-<body>
-    <div class="wrapper">
-        <header class="header">
-    <div class="container">
-        <div class="header_inner">
-            <div class="logo">
-                <img src="../images/checkbox.svg" alt="">
-                <span>Pomofocus</span>
-            </div>
-        </div>
-    </div>
+
+	<body>
+		<div class="wrapper">
+			<header class="header">
+	<div class="container">
+		<div class="header_inner">
+			<div class="logo">
+				<img src="../images/checkbox.svg" alt="" />
+				<span>Pomofocus</span>
+			</div>
+		</div>
+	</div>
 </header>
-        <main class="pomos">
-    <div class="container">
-        <div class="pomos__inner">
+ <main class="pomos">
+	<div class="container">
+		<div class="pomos__inner">
+			<div class="pomos__timer timer">
+				<div class="timer__options">
+					<button class="timer__option" id="btnTab1" type="button">Работа</button>
+					<button class="timer__option" id="btnTab2" type="button">Короткий перерыв</button>
+					<button class="timer__option" id="btnTab3" type="button">Длинный перерыв</button>
+				</div>
+				<div class="timer__tabs">
+					<!-- #1 -->
 
-            <div class="pomos__timer timer">
-                <div class="timer__options">
-                    <button class="timer__option" id="btnTab1" type="button">Помидора (работаем!)</button>
-                    <button class="timer__option" id="btnTab2" type="button">Короткий перерыв</button>
-                    <button class="timer__option" id="btnTab3" type="button">Длинный перерыв</button>
-                </div>
-                <div class="timer__tabs">
-                    <!-- #1 -->
+					<div class="timer__tab active" id="tab1">
+						<div class="timer__string">25:00</div>
+						<div class="timer__count">#1</div>
+					</div>
 
-                    <div class="timer__tab active" id="tab1">
-                        <div class="timer__string">25:00</div>
-                        <div class="timer__count">#1</div>
-                    </div>
+					<!-- #2 -->
+					<div class="timer__tab" id="tab2">
+						<div class="timer__string">05:00</div>
+						<div class="timer__count">#1</div>
+					</div>
 
-
-                    <!-- #2 -->
-                    <div class="timer__tab" id="tab2">
-                        <div class="timer__string">05:00</div>
-                        <div class="timer__count">#1</div>
-                    </div>
-
-
-                    <!-- #3 -->
-                    <div class="timer__tab" id="tab3">
-                        <div class="timer__string">15:00</div>
-                        <div class="timer__count">#1</div>
-                    </div>
-                    <div class="timer__bottom">
-                        <button class="timer__start" id="startBtn" type="button">Начнем!</button>
-                        <button class="timer__skip" id="skipBtn"><picture><source srcset="../images/skip.webp" type="image/webp"><img src="../images/skip.png" alt=""></picture></button>
-                    </div>
-                </div>
-            </div>
-            <div class="pomos__todos todos">
-                <div class="todos__top">
-                    <h2 class="todos__title">Задачи:</h2>
-                    <button class="todos__clear" type="button"></button>
-                </div>
-                <form action="#" class="todos__form">
-                    <label class="todos__input input">
-                        <input type="text" class="input-inner" placeholder="Введите задачу">
-                    </label>
-                </form>
-                <ul class="todos__list"></ul>
-                <button class="todos__add"></button>
-            </div>
-            <div class="pomos__static">
-                <div class="pomos__static-count"></div>
-                <div class="pomos-static-time"></div>
-            </div>
-
-        </div>
-    </div>
+					<!-- #3 -->
+					<div class="timer__tab" id="tab3">
+						<div class="timer__string">15:00</div>
+						<div class="timer__count">#1</div>
+					</div>
+					<div class="timer__bottom">
+						<button class="timer__start" id="startBtn" type="button">Начнем!</button>
+						<button class="timer__skip" id="skipBtn">
+							<picture><source srcset="../images/skip.webp" type="image/webp"><img src="../images/skip.png" alt="" /></picture>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="pomos__todos todos">
+				<div class="todos__top">
+					<h2 class="todos__title">Задачи:</h2>
+					<button class="todos__clear" type="button"></button>
+				</div>
+				<form action="#" class="todos__form">
+					<label class="todos__input input">
+						<input type="text" name="task" class="input-inner" placeholder="Введите задачу" />
+					</label>
+				</form>
+				<ul class="todos__list"></ul>
+				<button class="todos__add"></button>
+			</div>
+			<div class="pomos__static">
+				<div class="pomos__static-count"></div>
+				<div class="pomos-static-time"></div>
+			</div>
+		</div>
+	</div>
 </main>
-        <footer class="footer">
-    <div class="container">
-        <div class="footer__inner">
-            
-        </div>
-    </div>
-</footer>
-    </div>
 
-<script src="js/main.js"></script>
-</body>
+			<footer class="footer">
+	<div class="container">
+		<div class="footer__inner">
+			<p class="footer__description">
+				Develop by
+				<a
+					class="footer__description-link"
+					href="https://github.com/victor-maznichenko"
+				>
+					Victor Maznichenko
+				</a>
+			</p>
+		</div>
+	</div>
+</footer>
+
+		</div>
+		<script src="js/main.js"></script>
+
+	</body>
 </html>
